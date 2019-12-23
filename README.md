@@ -9,9 +9,13 @@ We need sklearn, pandas, gensim, sentence_transformers, and requests. Python sho
 The following terminal commands should install each library, respectively:
 
   pip install -U scikit-learn
+  
   pip install pandas
+  
   pip install -U gensim
+  
   pip install -U sentence-transformers
+  
   pipenv install requests
   
 This particular version of the code requires the file GoogleNews-vectors-negative300.bin to be present on the user's Desktop. If the file cannot be on the Desktop, Line 44 of Application.py should be changed from reference to '~/Desktop/GoogleNews-vectors-negative300.bin' to the directory in which the Google News vectors file is in.
