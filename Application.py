@@ -1,10 +1,12 @@
 '''
-Work in progress for agency information matching.
-Currently running this file will print to a .txt file Federal Register agency urls with matching Wikidata URIs.
+The Semantics Legal Information Systems project.
+Running this file will retrieve federal agency descriptions from the Federal Register and Dbpedia, then will create
+ .csv and .txt files with BERT, word2vec and tfidf similarity scores between such descriptions.
 
 Created on Sep 25, 2019
+Submitted: Dec 22, 2019
 
-@author: David
+@author: David Fu
 '''
 
 from uriMatching import uriMatching

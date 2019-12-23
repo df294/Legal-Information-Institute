@@ -1,4 +1,7 @@
-# Scikit Learn
+"""
+The docSimilarity class contains all methods necessary to compare two documents using tf-idf, word2vec, and BERT.
+"""
+
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -18,6 +21,8 @@ class docSimilarity():
     def getTFIDF(self, documents):
         """
         Returns a TF-IDF similarity score between two documents.
+        Credit and additional information: https://stackoverflow.com/questions/8897593/how-to-compute-the-similarity-between-two-text-documents
+
         @param documents: A size 2 array of strings. Example: ['This is a short sentence.', 'One. Two sentences here.']
         """
         tfidf = TfidfVectorizer().fit_transform(documents)
@@ -28,31 +33,22 @@ class docSimilarity():
     def getCosineBERT(self, documents, model):
         """
         Returns a similarity score between Sentence Transformers BERT sentence embeddings of two documents.
+        Credit and additional information: https://github.com/UKPLab/sentence-transformers
+
         @param documents: A size 2 array of strings. Example: ['This is a short sentence.', 'One. Two sentences here.']
         """
         sentence_embeddings = model.encode(documents)
         return (1 - scipy.spatial.distance.cosine(sentence_embeddings[0], sentence_embeddings[1]))
         
 
-    def hardCosine(documents):
+    def softCosine(self, model, documents):
         """
-        Returns a similarity score between word2vec representations of two documents.
+        Returns a similarity score using cosine similarity between combined word vectors of two documents.
+        Credit and additional information: https://www.machinelearningplus.com/nlp/cosine-similarity/
+
+        @param model: A set of pretrained word embeddings, such as GoogleNews-vectors-negative300.bin.
         @param documents: A size 2 array of strings. Example: ['This is a short sentence.', 'One. Two sentences here.']
         """
-        # Create the Document Term Matrix
-        count_vectorizer = CountVectorizer(stop_words='english')
-        count_vectorizer = CountVectorizer()
-        sparse_matrix = count_vectorizer.fit_transform(documents)
-
-        # OPTIONAL: Convert Sparse Matrix to Pandas Dataframe if you want to see the word frequencies.
-        doc_term_matrix = sparse_matrix.todense()
-        df = pd.DataFrame(doc_term_matrix, columns=count_vectorizer.get_feature_names(), index=['doc_1', 'doc_2', 'doc_3', 'doc_4', 'doc_5', 'doc_6'])
-
-        # Compute Cosine Similarity
-        return cosine_similarity(df, df)
-
-    def softCosine(self, model, documents):
-        
         # Prepare a dictionary and a corpus.
         dictionary = corpora.Dictionary([simple_preprocess(doc) for doc in documents])
 

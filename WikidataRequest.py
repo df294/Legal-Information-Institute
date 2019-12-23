@@ -1,3 +1,7 @@
+"""
+The WikidataRequest class contains all methods necessary to extract federal agency URI information from Wikidata.
+"""
+
 import json
 import requests
 import time

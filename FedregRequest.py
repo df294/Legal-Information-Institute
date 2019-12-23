@@ -1,3 +1,7 @@
+"""
+The FedregRequest class contains all methods necessary to extract agency name and descriptions from the Federal Register API.
+"""
+
 import json
 import requests
 import pprint

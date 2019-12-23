@@ -1,3 +1,7 @@
+"""
+The uriMatching class contains the method necessary to combine agency information between the Federal Register and Wikidata.
+"""
+
 from FedregRequest import FedregRequest
 from WikidataRequest import WikidataRequest
 
